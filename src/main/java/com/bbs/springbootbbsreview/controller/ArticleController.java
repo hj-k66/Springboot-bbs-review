@@ -25,6 +25,14 @@ public class ArticleController {
         this.articleRepository = articleRepository;
     }
 
+    @PostMapping(value = "/{id}/update")
+    public String updateArticle(@PathVariable Long id, ArticleDto articleDto, Model model){
+        log.info("title:{}, content:{}", articleDto.getTitle(), articleDto.getContent());
+        Article article = articleRepository.save(articleDto.toEntity());
+        model.addAttribute("article", article);
+        return "redirect:/articles/" + article.getId();
+    }
+
     @GetMapping(value="/{id}/edit")
     public String getEditPage(@PathVariable Long id, Model model){
         Optional<Article> article = articleRepository.findById(id);
