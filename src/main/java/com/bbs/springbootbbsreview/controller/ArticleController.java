@@ -25,6 +25,19 @@ public class ArticleController {
         this.articleRepository = articleRepository;
     }
 
+    @GetMapping(value="/{id}/edit")
+    public String getEditPage(@PathVariable Long id, Model model){
+        Optional<Article> article = articleRepository.findById(id);
+        if(article.isEmpty()){
+            model.addAttribute("message", String.format("%d가 없습니다.", id));
+            return "articles/error";
+        }
+        model.addAttribute("article", article.get());
+        return "articles/edit";
+
+    }
+
+
     @GetMapping(value="/list")
     public String getList(Model model){
         List<Article> allAricles = articleRepository.findAll();
