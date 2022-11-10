@@ -25,6 +25,11 @@ public class ArticleController {
         this.articleRepository = articleRepository;
     }
 
+    @GetMapping("")
+    public String index(){
+        return "redirect:/articles/list";
+    }
+
     @GetMapping(value = "/{id}/delete")
     public String delete(@PathVariable Long id){
         articleRepository.deleteById(id);
