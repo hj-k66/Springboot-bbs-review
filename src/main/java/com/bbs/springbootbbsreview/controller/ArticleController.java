@@ -31,7 +31,7 @@ public class ArticleController {
 
     @GetMapping(value="/new")
     public String getNewArticleForm(){
-        return "article/new";
+        return "articles/new";
     }
 
 }
