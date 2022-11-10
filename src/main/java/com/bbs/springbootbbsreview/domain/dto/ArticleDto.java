@@ -1,5 +1,6 @@
 package com.bbs.springbootbbsreview.domain.dto;
 
+import com.bbs.springbootbbsreview.domain.entity.Article;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
