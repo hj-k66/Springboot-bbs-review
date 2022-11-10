@@ -25,6 +25,12 @@ public class ArticleController {
         this.articleRepository = articleRepository;
     }
 
+    @GetMapping(value = "/{id}/delete")
+    public String delete(@PathVariable Long id){
+        articleRepository.deleteById(id);
+        return "redirect:/articles/list";
+    }
+
     @PostMapping(value = "/{id}/update")
     public String updateArticle(@PathVariable Long id, ArticleDto articleDto, Model model){
         log.info("title:{}, content:{}", articleDto.getTitle(), articleDto.getContent());
